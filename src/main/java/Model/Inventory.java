@@ -9,4 +9,12 @@ public class Inventory {
 
     // Still have to add the rest of the code
 
+
+    public static ObservableList<Part> getAllParts() {
+        return allParts;
+    }
+
+    public static ObservableList<Product> getAllProducts() {
+        return allProducts;
+    }
 }
