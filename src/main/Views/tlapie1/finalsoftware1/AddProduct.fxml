@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tlapie1.finalsoftware1.AddProductController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tlapie1.finalsoftware1.AddProductController">
    <children>
       <GridPane layoutX="17.0" layoutY="215.0" prefHeight="123.0" prefWidth="251.0">
         <columnConstraints>
@@ -37,10 +36,10 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <TextField prefHeight="25.0" prefWidth="88.0" GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="addProductInvTxt" prefHeight="25.0" prefWidth="88.0" GridPane.columnIndex="1" />
+            <TextField fx:id="addProductPriceTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="addProductMaxTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="addProductMinTxt" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <HBox alignment="CENTER" layoutX="8.0" layoutY="14.0" prefHeight="39.0" prefWidth="200.0">
@@ -54,23 +53,23 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="393.0" layoutY="14.0" prefHeight="39.0" prefWidth="200.0">
          <children>
-            <TextField prefHeight="25.0" prefWidth="175.0" promptText="Search by Part ID or Name" />
+            <TextField fx:id="addProductSearch" prefHeight="25.0" prefWidth="175.0" promptText="Search by Part ID or Name" />
          </children>
       </HBox>
-      <TableView layoutX="285.0" layoutY="63.0" prefHeight="157.0" prefWidth="308.0">
+      <TableView fx:id="addProductAvailablePartTableView" layoutX="285.0" layoutY="63.0" prefHeight="157.0" prefWidth="308.0">
         <columns>
-          <TableColumn prefWidth="52.0" text="Part ID" />
-          <TableColumn prefWidth="97.0" text="Part Name" />
-            <TableColumn prefWidth="93.0" text="Inventory Level" />
-            <TableColumn prefWidth="64.0" text="Price/Unit" />
+          <TableColumn fx:id="addProductAvailablePartIdCol" prefWidth="52.0" text="Part ID" />
+          <TableColumn fx:id="addProductAvailablePartNameCol" prefWidth="97.0" text="Part Name" />
+            <TableColumn fx:id="addProductAvailablePartInvCol" prefWidth="93.0" text="Inventory Level" />
+            <TableColumn fx:id="addProductAvailablePartPriceCol" prefWidth="64.0" text="Price/Unit" />
         </columns>
       </TableView>
-      <TableView layoutX="285.0" layoutY="268.0" prefHeight="157.0" prefWidth="308.0">
+      <TableView fx:id="addProductAssociatedPartTableView" layoutX="285.0" layoutY="268.0" prefHeight="157.0" prefWidth="308.0">
          <columns>
-            <TableColumn prefWidth="52.0" text="Part ID" />
-            <TableColumn prefWidth="97.0" text="Part Name" />
-            <TableColumn prefWidth="93.0" text="Inventory Level" />
-            <TableColumn prefWidth="64.0" text="Price/Unit" />
+            <TableColumn fx:id="addProductAssociatedPartIdCol" prefWidth="52.0" text="Part ID" />
+            <TableColumn fx:id="addProductAssociatedPartNameCol" prefWidth="97.0" text="Part Name" />
+            <TableColumn fx:id="addProductAssociatedPartInvCol" prefWidth="93.0" text="Inventory Level" />
+            <TableColumn fx:id="addProductAssociatedPartPriceCol" prefWidth="64.0" text="Price/Unit" />
          </columns>
       </TableView>
       <GridPane layoutX="17.0" layoutY="144.0" prefHeight="77.0" prefWidth="251.0">
@@ -85,13 +84,13 @@
          <children>
             <Label text="ID" />
             <Label prefHeight="17.0" prefWidth="38.0" text="Name" GridPane.rowIndex="1" />
-            <TextField prefHeight="25.0" prefWidth="205.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField editable="false" promptText="Auto Generated" GridPane.columnIndex="1" />
+            <TextField fx:id="addProductNameTxt" prefHeight="25.0" prefWidth="205.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="addProductIdTxt" editable="false" promptText="Auto Generated" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <HBox alignment="CENTER_RIGHT" layoutX="386.0" layoutY="220.0" prefHeight="48.0" prefWidth="207.0">
          <children>
-            <Button layoutX="137.0" layoutY="22.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Add" />
+            <Button layoutX="137.0" layoutY="22.0" mnemonicParsing="false" onAction="#addProductAddBtn" prefHeight="25.0" prefWidth="58.0" text="Add" />
          </children>
          <opaqueInsets>
             <Insets />
@@ -102,8 +101,8 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="394.0" layoutY="461.0" prefHeight="25.0" prefWidth="200.0" spacing="37.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Save" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#addProductSaveBtn" prefHeight="25.0" prefWidth="58.0" text="Save" />
+            <Button mnemonicParsing="false" onAction="#addProductCancelBtn" prefHeight="25.0" prefWidth="58.0" text="Cancel" />
          </children>
          <padding>
             <Insets right="25.0" />
@@ -111,7 +110,7 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="393.0" layoutY="425.0" prefHeight="25.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" text="Remove Associated Part" />
+            <Button mnemonicParsing="false" onAction="#addProductRemoveBtn" prefHeight="25.0" prefWidth="151.0" text="Remove Associated Part" />
          </children>
          <padding>
             <Insets right="25.0" top="5.0" />

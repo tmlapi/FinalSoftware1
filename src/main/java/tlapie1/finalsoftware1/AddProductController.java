@@ -3,9 +3,7 @@ package tlapie1.finalsoftware1;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,52 +12,75 @@ public class AddProductController implements Initializable {
 
 
     @FXML
-    private ToggleGroup bTogGroup;
+    private TableColumn<?, ?> addProductAssociatedPartIdCol;
 
     @FXML
-    private Label machineCompanyLbl;
+    private TableColumn<?, ?> addProductAssociatedPartInvCol;
 
     @FXML
-    private TextField partIdTxt;
+    private TableColumn<?, ?> addProductAssociatedPartNameCol;
 
     @FXML
-    private TextField partInvTxt;
+    private TableColumn<?, ?> addProductAssociatedPartPriceCol;
 
     @FXML
-    private TextField partMacIDCompNameTxt;
+    private TableView<?> addProductAssociatedPartTableView;
 
     @FXML
-    private TextField partMaxTxt;
+    private TableColumn<?, ?> addProductAvailablePartIdCol;
 
     @FXML
-    private TextField partMinTxt;
+    private TableColumn<?, ?> addProductAvailablePartInvCol;
 
     @FXML
-    private TextField partNameTxt;
+    private TableColumn<?, ?> addProductAvailablePartNameCol;
 
     @FXML
-    private TextField partPriceTxt;
+    private TableColumn<?, ?> addProductAvailablePartPriceCol;
 
     @FXML
-    void inhouseRadio(ActionEvent event) {
-        machineCompanyLbl.setText("Machine ID");
+    private TableView<?> addProductAvailablePartTableView;
+
+    @FXML
+    private TextField addProductIdTxt;
+
+    @FXML
+    private TextField addProductInvTxt;
+
+    @FXML
+    private TextField addProductMaxTxt;
+
+    @FXML
+    private TextField addProductMinTxt;
+
+    @FXML
+    private TextField addProductNameTxt;
+
+    @FXML
+    private TextField addProductPriceTxt;
+
+    @FXML
+    private TextField addProductSearch;
+
+    @FXML
+    void addProductAddBtn(ActionEvent event) {
+
     }
 
     @FXML
-    void outsourcedRadio(ActionEvent event) {
-        machineCompanyLbl.setText("Company Name");
-    }
-
-    @FXML
-    void onActionCancelAddPart(ActionEvent event) {
+    void addProductCancelBtn(ActionEvent event) {
 
     }
 
     @FXML
-    void onActionSaveNewPart(ActionEvent event) {
+    void addProductRemoveBtn(ActionEvent event) {
 
     }
 
+    @FXML
+    void addProductSaveBtn(ActionEvent event) {
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
