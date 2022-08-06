@@ -1,6 +1,8 @@
 package tlapie1.finalsoftware1;
 
 import Model.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -170,9 +172,31 @@ public class MainScreenController implements Initializable {
         productPriceUnitCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
+    // Search/Filtered List
+    private ObservableList<Part> searchPartList (String name) {
+        ObservableList<Part> filteredPartsList = FXCollections.observableArrayList();
+
+        // I modified this using String.valueOf to convert the id into a string so it can be compared
+        for (Part p : Inventory.getAllParts()) {
+            if (p.getName().contains(name) || String.valueOf(p.getId()).contains(name)) {
+                filteredPartsList.add(p);
+            }
+        }
+
+
+        return filteredPartsList;
+    }
+
+
     @FXML
     void partSearchBtn(ActionEvent event) {
 
+        // This converts whatever is entered into the search bar into a string
+        String searchResult = String.valueOf(partSearchTxt.getText());
+
+        ObservableList<Part> filteredParts = searchPartList(searchResult);
+
+        partTableView.setItems(filteredParts);
     }
 
     @FXML
