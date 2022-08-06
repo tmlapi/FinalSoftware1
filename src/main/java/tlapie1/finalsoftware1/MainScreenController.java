@@ -182,14 +182,32 @@ public class MainScreenController implements Initializable {
                 filteredPartsList.add(p);
             }
         }
-
-
+        if (filteredPartsList.isEmpty()) {
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "No Matches Found");
+            alert1.show();
+        }
         return filteredPartsList;
+    }
+
+    private ObservableList<Product> searchProductList (String name) {
+        ObservableList<Product> filteredProductList = FXCollections.observableArrayList();
+
+        // I modified this using String.valueOf to convert the id into a string so it can be compared
+        for (Product p : Inventory.getAllProducts()) {
+            if (p.getName().contains(name) || String.valueOf(p.getId()).contains(name)) {
+                filteredProductList.add(p);
+            }
+        }
+        if (filteredProductList.isEmpty()) {
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "No Matches Found");
+            alert1.show();
+        }
+        return filteredProductList;
     }
 
 
     @FXML
-    void partSearchBtn(ActionEvent event) {
+    public void partSearchBtn(ActionEvent event) {
 
         // This converts whatever is entered into the search bar into a string
         String searchResult = String.valueOf(partSearchTxt.getText());
@@ -200,8 +218,13 @@ public class MainScreenController implements Initializable {
     }
 
     @FXML
-    void productSearchBtn(ActionEvent event) {
+    public void productSearchBtn(ActionEvent event) {
 
+        // This converts whatever is entered into the search bar into a string
+        String searchResult = String.valueOf(productSearchTxt.getText());
+
+        ObservableList<Product> filteredProducts= searchProductList(searchResult);
+
+        productTableView.setItems(filteredProducts);
     }
-
 }
