@@ -22,6 +22,11 @@ public class Inventory {
         allProducts.add(product);
     }
 
+    // Lookup part/product using ID or Name
+
+    // Update Part and Product
+
+    // Delete Part, Product
 
 
     public static ObservableList<Part> getAllParts() {

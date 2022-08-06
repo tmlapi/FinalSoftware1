@@ -1,5 +1,7 @@
 package tlapie1.finalsoftware1;
 
+import Model.Part;
+import Model.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -82,6 +84,17 @@ public class ModifyProductController implements Initializable {
     void modifyProductSaveBtn(ActionEvent event) {
 
     }
+
+    public void sendProduct (Product product) {
+        modifyProductIdTxt.setText(String.valueOf(product.getId()));
+        modifyProductNameTxt.setText(product.getName());
+        modifyProductInvTxt.setText(String.valueOf(product.getStock()));
+        modifyProductPriceTxt.setText(String.valueOf(product.getPrice()));
+        modifyProductMaxTxt.setText(String.valueOf(product.getMax()));
+        modifyProductMinTxt.setText(String.valueOf(product.getMin()));
+        // Still need to figure how to do radio buttons
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

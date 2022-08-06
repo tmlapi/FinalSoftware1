@@ -1,5 +1,9 @@
 package tlapie1.finalsoftware1;
 
+import Model.InHouse;
+import Model.Inventory;
+import Model.Outsourced;
+import Model.Product;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +22,22 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+
+        // Creating Test Data
+        InHouse brake = new InHouse(1, 14, 1, 20, "Brake Disks", 119.99, 3);
+        InHouse handleBars = new InHouse(2, 20, 1, 20, "Handle Bars", 169.69, 2);
+        Outsourced frame = new Outsourced(3, 7, 1, 10, "Trex Frame", 421.76, "Trex");
+        Outsourced tires = new Outsourced(4, 80, 1, 100, "Maxxis Tires", 75.21, "Maxxis");
+        Product trexBike = new Product(1, 2, 1, 5, "Trex Bike", 820.13);
+
+        // Adding test data to Observable Lists
+        Inventory.newPart(brake);
+        Inventory.newPart(handleBars);
+        Inventory.newPart(frame);
+        Inventory.newPart(tires);
+        Inventory.newProduct(trexBike);
+
+
         launch();
     }
 }

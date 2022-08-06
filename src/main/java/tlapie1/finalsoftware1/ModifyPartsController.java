@@ -1,12 +1,17 @@
 package tlapie1.finalsoftware1;
 
+import Model.Part;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
-public class ModifyPartsController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ModifyPartsController implements Initializable {
     @FXML
     private Label modifyMachineCompanyLbl;
 
@@ -51,6 +56,21 @@ public class ModifyPartsController {
 
     @FXML
     void onActionSaveModifyPart(ActionEvent event) {
+
+    }
+
+    //Adding function to send data to modify information
+    public void sendPart (Part part) {
+        modifyPartIdTxt.setText(String.valueOf(part.getId()));
+        modifyPartNameTxt.setText(part.getName());
+        modifyPartInvTxt.setText(String.valueOf(part.getStock()));
+        modifyPartPriceTxt.setText(String.valueOf(part.getPrice()));
+        modifyPartMaxTxt.setText(String.valueOf(part.getMax()));
+        modifyPartMinTxt.setText(String.valueOf(part.getMin()));
+        // Still need to figure how to do radio buttons
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }

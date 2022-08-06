@@ -3,16 +3,28 @@ package tlapie1.finalsoftware1;
 import Model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static Model.Inventory.getAllParts;
+import static Model.Inventory.getAllProducts;
+
 public class MainScreenController implements Initializable {
+
+    Stage stage;
+    Parent scene;
 
     @FXML
     private TableColumn<Part, Integer> partIdCol;
@@ -51,59 +63,82 @@ public class MainScreenController implements Initializable {
     private TableView<Product> productTableView;
 
     @FXML
-    void onActionAddPart(ActionEvent event) {
-
+    void onActionAddPart(ActionEvent event) throws IOException {
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("AddPart.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
     @FXML
-    void onActionAddProduct(ActionEvent event) {
-
+    void onActionAddProduct(ActionEvent event) throws IOException {
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("AddProduct.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
     @FXML
     void onActionDeletePart(ActionEvent event) {
-
+        Part deletePart = partTableView.getSelectionModel().getSelectedItem();
+        if (deletePart == null) {
+            return;
+        } else {
+            getAllParts().remove(deletePart);
+        }
     }
 
     @FXML
     void onActionDeleteProduct(ActionEvent event) {
-
+        Product deleteProduct = productTableView.getSelectionModel().getSelectedItem();
+        if (deleteProduct == null) {
+            return;
+        } else {
+            getAllProducts().remove(deleteProduct);
+        }
     }
 
     @FXML
     void onActionExit(ActionEvent event) {
-
+        System.exit(0);
     }
 
     @FXML
-    void onActionModifyPart(ActionEvent event) {
+    void onActionModifyPart(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ModifyPart.fxml"));
+        loader.load();
 
+        ModifyPartsController MODController = loader.getController();
+        MODController.sendPart(partTableView.getSelectionModel().getSelectedItem());
+
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        Parent scene = loader.getRoot();
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
     @FXML
-    void onActionModifyProduct(ActionEvent event) {
+    void onActionModifyProduct(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("ModifyProduct.fxml"));
+        loader.load();
 
+        ModifyProductController MODProController = loader.getController();
+        MODProController.sendProduct(productTableView.getSelectionModel().getSelectedItem());
+
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        Parent scene = loader.getRoot();
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // Creating Test Data
-        InHouse brake = new InHouse(1, 14, 1, 20, "Brake Disks", 119.99, 3);
-        InHouse handleBars = new InHouse(2, 20, 1, 20, "Handle Bars", 169.69, 2);
-        Outsourced frame = new Outsourced(3, 7, 1, 10, "Trex Frame", 421.76, "Trex");
-        Outsourced tires = new Outsourced(4, 80, 1, 100, "Maxxis Tires", 75.21, "Maxxis");
-        Product trexBike = new Product(1, 2, 1, 5, "Trex Bike", 820.13);
-
-        Inventory.newPart(brake);
-        Inventory.newPart(handleBars);
-        Inventory.newPart(frame);
-        Inventory.newPart(tires);
-        Inventory.newProduct(trexBike);
-
         // Setting the table view in MainScreen for Parts and Product tables using the getter for observable lists
         //in the Inventory model
-        partTableView.setItems(Inventory.getAllParts());
+        partTableView.setItems(getAllParts());
         productTableView.setItems(Inventory.getAllProducts());
 
         // Setting the part cols to the associated values
