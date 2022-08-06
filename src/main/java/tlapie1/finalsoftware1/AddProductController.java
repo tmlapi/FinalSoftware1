@@ -82,6 +82,11 @@ public class AddProductController implements Initializable {
 
     }
 
+    @FXML
+    void addProductSearchBtn(ActionEvent event) {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

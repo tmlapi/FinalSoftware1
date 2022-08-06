@@ -169,4 +169,15 @@ public class MainScreenController implements Initializable {
         productInventoryCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         productPriceUnitCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
+
+    @FXML
+    void partSearchBtn(ActionEvent event) {
+
+    }
+
+    @FXML
+    void productSearchBtn(ActionEvent event) {
+
+    }
+
 }

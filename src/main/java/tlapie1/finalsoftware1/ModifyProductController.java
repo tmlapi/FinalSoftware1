@@ -94,6 +94,11 @@ public class ModifyProductController implements Initializable {
 
     }
 
+    @FXML
+    void modifyProductSearchBtn(ActionEvent event) {
+
+    }
+
     public void sendProduct (Product product) {
         modifyProductIdTxt.setText(String.valueOf(product.getId()));
         modifyProductNameTxt.setText(product.getName());

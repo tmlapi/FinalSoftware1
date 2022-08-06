@@ -105,7 +105,9 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="partSearchTxt" layoutX="222.0" layoutY="73.0" promptText="Search by Part ID or Num" />
-      <TextField fx:id="productSearchTxt" layoutX="622.0" layoutY="73.0" promptText="Search by Part ID or Num" />
+      <TextField fx:id="partSearchTxt" layoutX="171.0" layoutY="72.0" promptText="Search by Part ID or Num" />
+      <TextField fx:id="productSearchTxt" layoutX="571.0" layoutY="72.0" promptText="Search by Part ID or Num" />
+      <Button layoutX="319.0" layoutY="72.0" mnemonicParsing="false" onAction="#partSearchBtn" text="Search" />
+      <Button layoutX="719.0" layoutY="72.0" mnemonicParsing="false" onAction="#productSearchBtn" text="Search" />
    </children>
 </AnchorPane>

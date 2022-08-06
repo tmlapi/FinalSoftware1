@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tlapie1.finalsoftware1.ModifyProductController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tlapie1.finalsoftware1.ModifyProductController">
    <children>
       <GridPane layoutX="17.0" layoutY="215.0" prefHeight="123.0" prefWidth="251.0">
         <columnConstraints>
@@ -51,9 +51,10 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="393.0" layoutY="14.0" prefHeight="39.0" prefWidth="200.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="285.0" layoutY="14.0" prefHeight="39.0" prefWidth="308.0">
          <children>
             <TextField fx:id="modifyProductSearch" prefHeight="25.0" prefWidth="175.0" promptText="Search by Part ID or Name" />
+            <Button mnemonicParsing="false" onAction="#modifyProductSearchBtn" text="Search" />
          </children>
       </HBox>
       <TableView fx:id="modifyProductAvailablePartTableView" layoutX="285.0" layoutY="63.0" prefHeight="157.0" prefWidth="308.0">
