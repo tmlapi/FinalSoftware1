@@ -7,15 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static Model.Inventory.getAllParts;
@@ -80,21 +78,39 @@ public class MainScreenController implements Initializable {
 
     @FXML
     void onActionDeletePart(ActionEvent event) {
-        Part deletePart = partTableView.getSelectionModel().getSelectedItem();
-        if (deletePart == null) {
-            return;
-        } else {
-            getAllParts().remove(deletePart);
+
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Part Will Be Deleted, Press 'OK' To Continue!", ButtonType.OK, ButtonType.CANCEL);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Part deletePart = partTableView.getSelectionModel().getSelectedItem();
+            if (deletePart == null) {
+                return;
+            } else {
+                getAllParts().remove(deletePart);
+            }
+        } else if (result.get() == ButtonType.CANCEL) {
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "No Changes Made");
+            alert1.show();
         }
     }
 
     @FXML
     void onActionDeleteProduct(ActionEvent event) {
-        Product deleteProduct = productTableView.getSelectionModel().getSelectedItem();
-        if (deleteProduct == null) {
-            return;
-        } else {
-            getAllProducts().remove(deleteProduct);
+
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Product Will Be Deleted, Press 'OK' To Continue!", ButtonType.OK, ButtonType.CANCEL);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Product deleteProduct = productTableView.getSelectionModel().getSelectedItem();
+            if (deleteProduct == null) {
+                return;
+            } else {
+                getAllProducts().remove(deleteProduct);
+            }
+        } else if (result.get() == ButtonType.CANCEL) {
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "No Changes Made");
+            alert1.show();
         }
     }
 
