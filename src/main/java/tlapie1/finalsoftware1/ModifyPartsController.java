@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +18,12 @@ public class ModifyPartsController implements Initializable {
 
     Stage stage;
     Parent scene;
+
+    @FXML
+    private RadioButton modifyInhouseBtn;
+
+    @FXML
+    private RadioButton modifyOutsourceBtn;
 
     @FXML
     private Label modifyMachineCompanyLbl;
@@ -80,6 +83,10 @@ public class ModifyPartsController implements Initializable {
         modifyPartPriceTxt.setText(String.valueOf(part.getPrice()));
         modifyPartMaxTxt.setText(String.valueOf(part.getMax()));
         modifyPartMinTxt.setText(String.valueOf(part.getMin()));
+
+        /*if (modifyInhouseBtn.isSelected()) {
+
+        }*/
         // Still need to figure how to do radio buttons
     }
     @Override
